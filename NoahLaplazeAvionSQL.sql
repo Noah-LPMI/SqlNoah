@@ -2,7 +2,7 @@ USE master
 GO
 IF NOT EXISTS(
   SELECT top 1 1 
-  FROM sys DATABASE
+  FROM sys. DATABASE
   WHERE NAME='avion'
   )
 BEGIN  
