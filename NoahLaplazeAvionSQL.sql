@@ -1,6 +1,12 @@
 USE master
 GO
-CREATE DATABASE avion
+IF NOT EXISTS(
+  SELECT top 1 1 
+  FROM sys DATABASE
+  WHERE NAME='avion'
+  )
+BEGIN  
+    EXEC('CREATE DATABASE avion')
 GO
 USE avion
 GO
