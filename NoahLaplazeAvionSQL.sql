@@ -7,6 +7,7 @@ IF NOT EXISTS(
   )
 BEGIN  
     EXEC('CREATE DATABASE avion')
+END  
 GO
 USE avion
 GO
