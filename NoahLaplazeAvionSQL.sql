@@ -1,3 +1,10 @@
+USE master
+GO
+CREATE DATABASE avion
+GO
+USE avion
+GO
+
 CREATE TABLE [Compagnie] (
   [id_compagnie] integer PRIMARY KEY,
   [code_compagnie] integer,
