@@ -1,0 +1,86 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table Compagnie {
+  id_compagnie integer [primary key]
+  code_compagnie integer
+  nom_compagnie varchar
+  siegeSocial_compagnie varchar
+}
+
+Table Pilote {
+  id_pilote integer [primary key]
+  matricule_pilote integer
+  nom_pilote varchar
+  prenom_pilote varchar
+  qualif_pilote varchar
+  id_compagnie integer
+}
+
+Table Avion{
+  id_avion integer [primary key]
+  code_avion varchar
+  type_avion varchar
+  modele_avion varchar
+  nbPassager_avion integer 
+}
+
+Table Vol{
+  id_vol integer [primary key]
+  id_compagnie integer [primary key]
+  id_avion integer [primary key]
+  id_billet integer [primary key]
+  dateDépart datetime
+  dateArrivé datetime
+  heureDépart timestamp
+  heureArrivé timestamp
+  villeDépart varchar
+  villeArrivé varchar
+  retard time
+}
+
+Table Passager{
+  id_passager integer [primary key]
+  nom_passager varchar
+  prenom_passager varchar
+  dateNaissance_passager datetime
+  telephone_passager varchar
+  status_passager varchar
+}
+
+Table Billet{
+  id_billet integer [primary key]
+  num_billet integer
+  dateEmission_billet datetime
+  dateReservation_billet datetime
+  datePaiement_billet datetime
+  id_siege integer
+  id_passager integer
+}
+
+Table Siege{
+  id_siege integer [primary key]
+  id_avion integer
+  numAllé_siege integer
+  numRang_siege integer
+  classe_siege varchar
+}
+
+
+//Compagnie->Pilote
+Ref: Compagnie.id_compagnie < Pilote.id_compagnie
+//Compagnie->Vol
+Ref: Compagnie.id_compagnie < Vol.id_compagnie
+//Avion->Vol
+Ref: Avion.id_avion < Vol.id_avion
+//Passager->Billet
+Ref: Passager.id_passager < Billet.id_passager
+//Siege->Billet
+Ref: Siege.id_siege < Billet.id_siege
+//Avion->Siege
+Ref: Avion.id_avion < Siege.id_avion
+//Vol->Billet
+Ref: Vol.id_billet < Billet.id_billet
+
+
+
